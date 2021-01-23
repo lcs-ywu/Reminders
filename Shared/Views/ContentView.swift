@@ -15,6 +15,7 @@ struct ContentView: View {
         List(store.tasks) { task in
           TaskCell(task: task)
         }
+        .navigationTitle("Reminders")
     }
 }
 

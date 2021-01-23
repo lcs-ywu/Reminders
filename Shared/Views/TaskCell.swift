@@ -25,7 +25,6 @@ struct TaskCell: View {
         HStack {
             Image(systemName: task.completed ? "checkmark.circle.fill" : "circle")
                 .onTapGesture {
-                    print("about to toggle")
                     task.completed.toggle()
                 }
             Text(task.description)

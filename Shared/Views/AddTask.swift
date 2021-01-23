@@ -9,6 +9,9 @@ import SwiftUI
 
 struct AddTask: View {
     
+    //The store, which the task will be appended to
+    @ObservedObject var store: TaskStore
+    
     //Details of the new task
     @State private var description = ""
     @State private var priority = TaskPriority.low
@@ -42,6 +45,9 @@ struct AddTask: View {
     }
     
     func saveTask() {
+        
+        //Add the task to the list of tasks
+        store.tasks.append(Task(description: description, priority: priority, completed: false))
         //Dismiss this view
         showing = false
     }
@@ -49,6 +55,6 @@ struct AddTask: View {
 
 struct AddTask_Previews: PreviewProvider {
     static var previews: some View {
-        AddTask(showing: .constant(true))
+        AddTask(store: testStore, showing: .constant(true))
     }
 }
